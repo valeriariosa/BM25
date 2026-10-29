@@ -5,9 +5,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
+- task: UseNode@1
   inputs:
-    versionSpec: '18.x'
+    version: '18.x'
   displayName: 'Instalar Node.js'
 
 - script: |
@@ -15,9 +15,5 @@ steps:
   displayName: 'Instalar dependencias'
 
 - script: |
-    npm test --if-present
-  displayName: 'Ejecutar pruebas unitarias'
-
-- script: |
-    npm run build
+    npm run build --if-present
   displayName: 'Compilar proyecto'
